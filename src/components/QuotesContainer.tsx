@@ -10,7 +10,7 @@ const QuotesContaienr = (props : QuotesProps) => {
     const size = Math.min(w, h) / 3
     return <div>
         {props.quotes.map((quote : string, i : number) => 
-            <QuoteComponent key = {`quote_${i}`} size = {size} x = {(i % 3) * size * 1.2} y = {200 + Math.floor(i / 3) * size * 1.2} text = {quote}></QuoteComponent>)}
+            <QuoteComponent key = {`quote_${i}`} size = {size} x = {size / 2 + (i % 4) * size * 1.2} y = {200 + Math.floor(i / 4) * size * 1.2} text = {quote}></QuoteComponent>)}
     </div>
 }
 export default QuotesContaienr

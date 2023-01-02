@@ -15,11 +15,12 @@ const QuoteComponent = (props : QuoteProps) => {
             if (ctx) {
                 ctx.fillStyle = '#212121'
                 ctx.fillRect(0, 0, size, size)
-                ctx.font = `${size / 7}px sans-seriff`
+                ctx.font = `italic ${size / 7}px sans-seriff`
                 console.log("FONT", ctx.font)
                 ctx.fillStyle = 'white'
-                const tw = ctx.measureText(props.text).width 
-                ctx.fillText(props.text, size / 2 - tw / 2, size / 2 - size / 12, size)
+                const text = `"${props.text}"`
+                const tw = ctx.measureText(text).width 
+                ctx.fillText(text, size / 2 - tw / 2, size / 2 - size / 12, size)
             }
         }} style = {
             {
