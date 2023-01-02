@@ -12,9 +12,11 @@ const CanvasComponent = (props : CanvasProps) => {
     useEffect(() => {
         if (r1 && r1.current) {
             const obj = r1.current as HTMLCanvasElement
-            props.cb(obj.getContext('2d'))
+            const ctx = obj.getContext('2d')
+            props.cb(ctx)
+            //console.log("Drawing here ctx", ctx)
         }
-    })
+    }, [props.cb])
     return <canvas ref = {r1} width = {`${props.w}px`} height = {`${props.h}px`} style = {props.style}>
     </canvas>
 }
