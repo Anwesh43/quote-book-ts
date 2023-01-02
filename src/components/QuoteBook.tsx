@@ -3,12 +3,15 @@ import { useQuery, useQueryClient } from "react-query";
 import ErrorComponent from "./Error";
 import Loader from "./Loader";
 import QuotesContaienr from "./QuotesContainer";
+
 interface QuoteBookProps extends React.PropsWithChildren{
   
 }
+
 interface QuoteData {
     quotes : Array<string>,  
 }
+
 const QuoteBook = (props : QuoteBookProps) => {
     
     const t  = useQuery("quotes", () => fetch('http://localhost:8000/quotes/all').then(async (res) => {
