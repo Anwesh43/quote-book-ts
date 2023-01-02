@@ -5,18 +5,24 @@ import DimensionProvider from './providers/DimensionProvider';
 import Loader from './components/Loader';
 import TextInput from './components/TextInput';
 import QuotesContaienr from './components/QuotesContainer';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import QuoteBook from './components/QuoteBook';
 
 function App() {
-  const [quotes, setQuotes] = useState<string[]>([])
+  const queryClient = new QueryClient()
+  //const [quotes, setQuotes] = useState<string[]>([])
   return (
     <div className="App">
-      <DimensionProvider>
-        <TextInput setFinalText={(t : string) => {
-          setQuotes([...quotes, t])
-        }}></TextInput>
-        <QuotesContaienr quotes={quotes}></QuotesContaienr>
-        <Loader x = {300} y = {300} ></Loader>
+      <QueryClientProvider client = {queryClient}>
+        <DimensionProvider>
+          <TextInput setFinalText={(t : string) => {
+            //setQuotes([...quotes, t])
+          }}></TextInput>
+
+          <QuoteBook></QuoteBook>
       </DimensionProvider>
+      </QueryClientProvider>
+      
     </div>
   );
 }
