@@ -3,12 +3,13 @@ const useDimension = () =>  {
     const [w, setW] = useState<number>(window.innerWidth)
     const [h, setH] = useState<number>(window.innerHeight)
     useEffect(() => {
-        window.onresize = () => {
+        const listener = () => {
             setW(window.innerWidth)
             setH(window.innerHeight)
         }
+        window.addEventListener('resize', listener, undefined) 
         return () => {
-           window.removeEventListener('resize')
+           window.removeEventListener('resize', listener)
         }
     })
     return {
